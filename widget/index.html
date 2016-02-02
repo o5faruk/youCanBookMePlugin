@@ -16,17 +16,14 @@
   <script src="app.js"></script>
   <script src="enums.js"></script>
   <script src="app.services.js"></script>
-  <script>function keepInView(item) {
-    if ((document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop > item.offsetTop)item.scrollIntoView();
-  }</script>
 </head>
 <body>
-<div ng-controller="WidgetHomeCtrl as WidgetHome">
-  <iframe
-      src="https://sakshityagi.youcanbook.me/?noframe=true&skipHeaderFooter=true"
-      style="width:100%;height:1000px;border:0px;background-color:transparent;"
-      frameborder="0" allowtransparency="true"
-      onload="keepInView(this);"></iframe>
-</div>
+  <div class="content"
+       style="-webkit-overflow-scrolling: touch !important;overflow: auto; height: 100%;"
+       ng-controller="WidgetHomeCtrl as WidgetHome">
+    <iframe src="{{WidgetHome.data.content.custom | returnUrl}}"
+            ng-if="WidgetHome.data.content.custom"
+            style="height: 100%;position: relative"></iframe>
+  </div>
 </body>
 </html>

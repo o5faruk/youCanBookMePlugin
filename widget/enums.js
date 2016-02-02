@@ -3,7 +3,7 @@
 (function (angular) {
   angular.module('youCanBookMePluginWidget')
     .constant('TAG_NAMES', {
-      SMOOCH_CHAT_INFO: 'smoochChatInfo'
+        SCHEDULING_INFO: 'schedulingInfo'
     })
     .constant('STATUS_CODE', {
       INSERTED: 'inserted',
