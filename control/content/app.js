@@ -38,12 +38,14 @@
             $timeout(function () {
               ContentHome.validUrl = false;
             }, 3000);
+            ContentHome.inValidUrl = false;
             ContentHome.saveData(ContentHome.data, TAG_NAMES.SCHEDULING_INFO);
           } else {
             ContentHome.inValidUrl = true;
             $timeout(function () {
               ContentHome.inValidUrl = false;
             }, 3000);
+            ContentHome.validUrl = false;
           }
         };
 
