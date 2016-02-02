@@ -46,7 +46,8 @@
       </div>
     </div>
     <hr class="none">
-    <div class="item clearfix row" ng-if="ContentHome.validUrl || ContentHome.inValidUrl">
+    <div class="item clearfix row"
+         ng-if="ContentHome.validUrl || ContentHome.inValidUrl">
       <div class="main pull-right col-md-9">
         <div class="alert alert-success alert-sm text-center"
              ng-show="ContentHome.validUrl">Url
@@ -74,6 +75,9 @@
 
         <p>Hint: If you are taking payments, use your app or content DeepLink
           URL to redirect back to the app after a payment is made.</p>
+
+        <p>Don't have a youcanbook.me account click <a
+            ng-click="ContentHome.gotToPage()">here</a> to register</p>
       </div>
     </div>
   </div>

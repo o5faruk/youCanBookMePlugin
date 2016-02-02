@@ -16,6 +16,10 @@
           }
         };
 
+        ContentHome.gotToPage = function () {
+          window.open('https://youcanbook.me/', '_blank');
+        };
+
         ContentHome.saveData = function (newObj, tag) {
           if (typeof newObj === 'undefined') {
             return;
