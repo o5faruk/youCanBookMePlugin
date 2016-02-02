@@ -1,4 +1,3 @@
-
 'use strict';
 
 (function (angular, buildfire) {
@@ -64,4 +63,12 @@
         }
       }
     }])
+    .factory("Utils", [function () {
+      return {
+        validateUrl: function (url) {
+          var regExp = /^https?:\/\/(\w+)\.youcanbook\.me/;
+          return regExp.test(url);
+        }
+      }
+    }]);
 })(window.angular, window.buildfire);

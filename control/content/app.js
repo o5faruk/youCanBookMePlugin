@@ -2,9 +2,12 @@
 
 (function (angular, buildfire) {
   angular.module('youCanBookMePluginContent', ['ui.bootstrap'])
-    .controller('ContentHomeCtrl', ['$scope', 'Buildfire', 'STATUS_CODE', 'TAG_NAMES', 'DataStore',
-      function ($scope, Buildfire, STATUS_CODE, TAG_NAMES, DataStore) {
+    .controller('ContentHomeCtrl', ['$scope', 'Buildfire', 'STATUS_CODE', 'TAG_NAMES', 'DataStore', 'Utils', '$timeout',
+      function ($scope, Buildfire, STATUS_CODE, TAG_NAMES, DataStore, Utils, $timeout) {
         var ContentHome = this;
+
+        ContentHome.validUrl = false;
+        ContentHome.inValidUrl = false;
 
         ContentHome.data = {
           content: {
@@ -29,9 +32,19 @@
         ContentHome.validateUrl = function () {
           if (ContentHome.subDomain)
             ContentHome.data.content.subDomain = ContentHome.subDomain;
-          if (ContentHome.custom)
+          if (ContentHome.custom && Utils.validateUrl(ContentHome.custom)) {
             ContentHome.data.content.custom = ContentHome.custom;
-          ContentHome.saveData(ContentHome.data, TAG_NAMES.SCHEDULING_INFO);
+            ContentHome.validUrl = true;
+            $timeout(function () {
+              ContentHome.validUrl = false;
+            }, 3000);
+            ContentHome.saveData(ContentHome.data, TAG_NAMES.SCHEDULING_INFO);
+          } else {
+            ContentHome.inValidUrl = true;
+            $timeout(function () {
+              ContentHome.inValidUrl = false;
+            }, 3000);
+          }
         };
 
         /*

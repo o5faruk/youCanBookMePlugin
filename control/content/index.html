@@ -33,7 +33,7 @@
         <br>
 
         <div class="pull-left col-md-8 padding-zero">
-          <input type="text" class="form-control"
+          <input type="url" class="form-control"
                  placeholder="Custom" ng-model="ContentHome.custom">
         </div>
         <div class="col-md-4 pull-right">
@@ -42,6 +42,19 @@
                   ng-click="ContentHome.validateUrl()">
             Validate
           </button>
+        </div>
+      </div>
+    </div>
+    <hr class="none">
+    <div class="item clearfix row" ng-if="ContentHome.validUrl || ContentHome.inValidUrl">
+      <div class="main pull-right col-md-9">
+        <div class="alert alert-success alert-sm text-center"
+             ng-show="ContentHome.validUrl">Url
+          successfully validated
+        </div>
+        <div class="alert alert-danger alert-sm text-center"
+             ng-show="ContentHome.inValidUrl">
+          Invalid Url. Please try again.
         </div>
       </div>
     </div>
@@ -64,7 +77,6 @@
       </div>
     </div>
   </div>
-</div>
 </div>
 </body>
 </html>
