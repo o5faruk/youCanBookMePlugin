@@ -1,0 +1,21 @@
+{
+  "author": "BuildFire",
+  "pluginName": "Scheduling Plugin",
+  "pluginDescription": "A plugin that integrates with youcanbook.me to allow users to book time with you.",
+  "supportEmail": "support@buildfire.com",
+  "control": {
+    "content": {
+      "enabled": true
+    },
+    "settings": {
+      "enabled": false
+    },
+    "design": {
+      "enabled": false
+    }
+  },
+  "widget": {
+  },
+  "features": [],
+  "languages": ["en"]
+}

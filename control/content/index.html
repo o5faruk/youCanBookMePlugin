@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app='youCanBookMePluginContent'>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="../../../../styles/helper.css" rel="stylesheet">
+  <link href="../../../../styles/siteIcons.css" rel="stylesheet">
+  <!-- JS -->
+
+
+  <!-- JS -->
+  <script src="../../../../scripts/jquery/jquery-1.11.2.min.js"></script>
+  <script src="../../../../scripts/buildfire.js"></script>
+  <script src="../../../../scripts/angular/angular.min.js"></script>
+  <script src="../../../../scripts/angular/ui-bootstrap.min.js"></script>
+  <script src="app.js"></script>
+  <script src="app.services.js"></script>
+  <script src="enums.js"></script>
+</head>
+<body>
+<div ng-controller="ContentHomeCtrl as ContentHome">
+  <div class="content">
+    <div class="item clearfix row">
+      <div class="labels col-md-3 padding-right-zero pull-left">
+        <span>URL</span>
+      </div>
+      <div class="main pull-right col-md-9 padding-left-zero row">
+        <div class="pull-left col-md-8 padding-zero">
+          <input type="text" class="form-control"
+                 placeholder="Sub Domain" ng-model="ContentHome.subDomain">
+        </div>
+        <br>
+        <br>
+
+        <div class="pull-left col-md-8 padding-zero">
+          <input type="url" class="form-control"
+                 placeholder="Custom" ng-model="ContentHome.custom">
+        </div>
+        <div class="col-md-4 pull-right">
+          <button class="btn btn-primary pull-right stretch"
+                  ng-disabled="!ContentHome.custom"
+                  ng-click="ContentHome.validateUrl()">
+            Validate
+          </button>
+        </div>
+      </div>
+    </div>
+    <hr class="none">
+    <div class="item clearfix row"
+         ng-if="ContentHome.validUrl || ContentHome.inValidUrl">
+      <div class="main pull-right col-md-9">
+        <div class="alert alert-success alert-sm text-center"
+             ng-show="ContentHome.validUrl">Url
+          successfully validated
+        </div>
+        <div class="alert alert-danger alert-sm text-center"
+             ng-show="ContentHome.inValidUrl">
+          Invalid Url. Please try again.
+        </div>
+      </div>
+    </div>
+    <hr class="none">
+    <div class="item clearfix row">
+      <div class="col-md-9 pull-right">
+        <p>Note 1: For the best user experience, link to mobile optimized
+          content.</p>
+
+        <p>Note 2: Based on your web content's settings, some contents will
+          not show up in the emulator. However, if you do not see your
+          content in the emulator, it will still show up in the app.</p>
+
+        <p>Note 3: if you are taking payments through this web page, you
+          must open the URL outside of the app or the app will get rejected
+          by Apple in the submission review process.</p>
+
+        <p>Hint: If you are taking payments, use your app or content DeepLink
+          URL to redirect back to the app after a payment is made.</p>
+
+        <p>Don't have a youcanbook.me account click <a
+            ng-click="ContentHome.gotToPage()">here</a> to register</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
