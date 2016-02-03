@@ -1,7 +1,7 @@
 {
   "author": "BuildFire",
   "pluginName": "Scheduling Plugin",
-  "pluginDescription": "A plugin that integrates with youcanbook.me to allow users to book time with you.",
+  "pluginDescription": "The Easiest Way To Take Bookings Online. Let people book fixed length slots straight into your Google Calendar.",
   "supportEmail": "support@buildfire.com",
   "control": {
     "content": {

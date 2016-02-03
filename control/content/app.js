@@ -53,6 +53,25 @@
           }
         };
 
+        ContentHome.addSubDomain = function () {
+          if (ContentHome.subDomain) {
+            ContentHome.custom = "https://" + ContentHome.subDomain + ".youcanbook.me";
+          }
+          else {
+            ContentHome.data.content.subDomain = null;
+            ContentHome.saveData(ContentHome.data, TAG_NAMES.SCHEDULING_INFO);
+          }
+        };
+
+        ContentHome.clearUrl = function () {
+          if (!ContentHome.custom) {
+            ContentHome.data.content.custom = null;
+            ContentHome.data.content.subDomain = null;
+            ContentHome.subDomain = null;
+            ContentHome.saveData(ContentHome.data, TAG_NAMES.SCHEDULING_INFO);
+          }
+        };
+
         /*
          * Go pull any previously saved data
          * */
@@ -82,5 +101,6 @@
           DataStore.get(TAG_NAMES.SCHEDULING_INFO).then(success, error);
         };
         init();
-      }])
+      }
+    ])
 })(window.angular, window.buildfire);
