@@ -39,8 +39,7 @@ module.exports = function(config) {
         preprocessors: {
             'widget/**/!(js)/*.js': ['coverage'],
             'widget/*.js': ['coverage'],
-            'control/settings/**/!(js)/*.js': ['coverage'],
-            'control/settings/*.js': ['coverage']
+            'control/**/!(js)/*.js': ['coverage']
         },
         plugins: [
             'karma-phantomjs-launcher',

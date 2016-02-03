@@ -27,18 +27,19 @@
       <div class="main pull-right col-md-9 padding-left-zero row">
         <div class="pull-left col-md-8 padding-zero">
           <input type="text" class="form-control"
-                 placeholder="Sub Domain" ng-model="ContentHome.subDomain">
+                 placeholder="Sub Domain" ng-model="ContentHome.subDomain"
+                 ng-change="ContentHome.addSubDomain()">
         </div>
         <br>
         <br>
 
         <div class="pull-left col-md-8 padding-zero">
           <input type="url" class="form-control"
-                 placeholder="Custom" ng-model="ContentHome.custom">
+                 placeholder="Custom" ng-model="ContentHome.custom" ng-change="ContentHome.clearUrl()">
         </div>
         <div class="col-md-4 pull-right">
           <button class="btn btn-primary pull-right stretch"
-                  ng-disabled="!ContentHome.custom"
+                  ng-disabled="!(ContentHome.custom || ContentHome.subDomain)"
                   ng-click="ContentHome.validateUrl()">
             Validate
           </button>
