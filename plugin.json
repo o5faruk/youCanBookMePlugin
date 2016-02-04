@@ -1,7 +1,7 @@
 {
   "author": "BuildFire",
-  "pluginName": "YouCanBook.Me",
-  "pluginDescription": "The Easiest Way To Take Bookings Online. Let people book fixed length slots straight into your Google Calendar.",
+  "pluginName": "YouCanBook.Me Scheduling and Booking",
+  "pluginDescription": "YouCanBook.me is booking software that integrates with your Google or iCloud Calendar. Get a personalized scheduling page so your customers can book you online.",
   "supportEmail": "support@buildfire.com",
   "control": {
     "content": {
