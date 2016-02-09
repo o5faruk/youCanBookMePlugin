@@ -63,7 +63,7 @@ describe('Unit: youCanBookMePluginContent content app', function () {
       it('it should pass if ContentHome.validateUrl is called with success', function () {
         ContentHome.subDomain = 'KMT';
         ContentHome.custom = 'http://kmt.youcanbook.me';
-        Utils.validateUrl(ContentHome.custom)
+        Utils.validateUrl(ContentHome.custom);
         ContentHome.validateUrl();
         var result  = true;
       });
@@ -103,6 +103,18 @@ describe('Unit: youCanBookMePluginContent content app', function () {
         ContentHome.custom = null;
         ContentHome.clearUrl();
       });
+
+      it('it should pass if ContentHome.init is called for error', function () {
+        ContentHome.init();
+        ContentHome.error()
+      });
+
+      it('it should pass if ContentHome.init is called for success', function () {
+        var result = {data: {content: {}}};
+        ContentHome.init();
+        ContentHome.success(result);
+      });
+
     });
   });
 });

@@ -75,8 +75,8 @@
         /*
          * Go pull any previously saved data
          * */
-        var init = function () {
-          var success = function (result) {
+        ContentHome.init = function () {
+          ContentHome.success = function (result) {
               console.info('init success result:', result);
               if (Object.keys(result.data).length > 0) {
                 ContentHome.data = result.data;
@@ -89,8 +89,8 @@
                 if (ContentHome.data.content.custom)
                   ContentHome.custom = ContentHome.data.content.custom;
               }
-            }
-            , error = function (err) {
+            };
+          ContentHome.error = function (err) {
               if (err && err.code !== STATUS_CODE.NOT_FOUND) {
                 console.error('Error while getting data', err);
               }
@@ -98,9 +98,9 @@
                 ContentHome.saveData(JSON.parse(angular.toJson(ContentHome.data)), TAG_NAMES.SCHEDULING_INFO);
               }
             };
-          DataStore.get(TAG_NAMES.SCHEDULING_INFO).then(success, error);
+          DataStore.get(TAG_NAMES.SCHEDULING_INFO).then(ContentHome.success, ContentHome.error);
         };
-        init();
+        ContentHome.init();
       }
     ])
 })(window.angular, window.buildfire);
