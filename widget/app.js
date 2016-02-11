@@ -14,7 +14,7 @@
             if (!WidgetHome.data.content)
               WidgetHome.data.content = {};
             console.log(">>>>>", WidgetHome.data);
-          }
+          };
           WidgetHome.error = function (err) {
             if (err && err.code !== STATUS_CODE.NOT_FOUND) {
               console.error('Error while getting data', err);
@@ -26,9 +26,9 @@
         WidgetHome.onUpdateCallback = function (event) {
           if (event && event.tag === TAG_NAMES.SCHEDULING_INFO) {
             WidgetHome.data = event.data;
-            if (WidgetHome.data&&!WidgetHome.data.design)
+            if (WidgetHome.data && !WidgetHome.data.design)
               WidgetHome.data.design = {};
-            if (WidgetHome.data&&!WidgetHome.data.content)
+            if (WidgetHome.data && !WidgetHome.data.content)
               WidgetHome.data.content = {};
           }
         };
@@ -38,9 +38,9 @@
         WidgetHome.init();
 
       }])
-      .filter('returnUrl', ['$sce', function ($sce) {
-        return function (url) {
-          return $sce.trustAsResourceUrl(url+"?noframe=true&skipHeaderFooter=true");
-        }
-      }]);
+    .filter('returnUrl', ['$sce', function ($sce) {
+      return function (url) {
+        return $sce.trustAsResourceUrl(url + "?noframe=true&skipHeaderFooter=true");
+      }
+    }]);
 })(window.angular);
