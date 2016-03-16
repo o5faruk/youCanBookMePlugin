@@ -1,10 +1,11 @@
 'use strict';
 
-(function (angular) {
+(function (angular, buildfire) {
   angular.module('youCanBookMePluginWidget', ['ui.bootstrap'])
     .controller('WidgetHomeCtrl', ['$scope', 'Buildfire', 'DataStore', 'TAG_NAMES', 'STATUS_CODE',
       function ($scope, Buildfire, DataStore, TAG_NAMES, STATUS_CODE) {
         var WidgetHome = this;
+        WidgetHome.isWebPlatform = false;
         /*
          * Fetch user's data from datastore
          */
@@ -13,7 +14,20 @@
             WidgetHome.data = result.data;
             if (!WidgetHome.data.content)
               WidgetHome.data.content = {};
-            console.log(">>>>>", WidgetHome.data);
+            buildfire.getContext(function (err, context) {
+              if (context) {
+                if (WidgetHome.data.content.custom && context.device.platform == "web") {
+                  WidgetHome.isWebPlatform = true;
+                } else {
+                  if (WidgetHome.data.content.custom)
+                    buildfire.navigation.openWindow(WidgetHome.data.content.custom, "_blank");
+                }
+              }
+              else {
+                console.log("Error getting context: ", err);
+              }
+
+            });
           };
           WidgetHome.error = function (err) {
             if (err && err.code !== STATUS_CODE.NOT_FOUND) {
@@ -43,4 +57,4 @@
         return $sce.trustAsResourceUrl(url + "?noframe=true&skipHeaderFooter=true");
       }
     }]);
-})(window.angular);
+})(window.angular, window.buildfire);
