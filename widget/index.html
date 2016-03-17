@@ -18,12 +18,27 @@
   <script src="app.services.js"></script>
 </head>
 <body>
-  <div class="content"
-       style="-webkit-overflow-scrolling: touch !important;overflow: auto; height: 100%;"
-       ng-controller="WidgetHomeCtrl as WidgetHome">
-    <iframe src="{{WidgetHome.data.content.custom | returnUrl}}"
-            ng-if="WidgetHome.data.content.custom"
-            style="height: 100%;position: relative"></iframe>
+
+<div class="content" ng-controller="WidgetHomeCtrl as WidgetHome">
+  <div style="text-align: center;vertical-align: middle; height: 100%"
+       ng-if="WidgetHome.data.content && WidgetHome.data.content.custom && WidgetHome.isWebPlatform">
+    <h3 style="margin-top: 50%; opacity: .25;"></h3>
+
+    <div>
+      <h2>Success!</h2>
+
+      <p>Your calendar has been linked and will show in your app. To view your
+        calendar now click <a href="{{WidgetHome.data.content.custom}}" target="_blank">here</a></p>
+    </div>
   </div>
+</div>
+
+<!--<div class="content"
+     style="-webkit-overflow-scrolling: touch !important;overflow: auto; height: 100%;"
+     ng-controller="WidgetHomeCtrl as WidgetHome">
+  <iframe src="{{WidgetHome.data.content.custom | returnUrl}}"
+          ng-if="WidgetHome.data.content.custom"
+          style="height: 100%;position: relative"></iframe>
+</div>-->
 </body>
 </html>
