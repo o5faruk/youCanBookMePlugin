@@ -11,9 +11,22 @@
          */
         WidgetHome.init = function () {
           WidgetHome.success = function (result) {
-            WidgetHome.data = result.data;
-            if (!WidgetHome.data.content)
-              WidgetHome.data.content = {};
+            if (result.data && result.id) {
+              WidgetHome.data = result.data;
+              if (!WidgetHome.data.content)
+                WidgetHome.data.content = {};
+            } else {
+              WidgetHome.data = {
+                content: {}
+              };
+              var dummyData = {
+                custom: "https://awesomeninja.youcanbook.me/",
+                subDomain: "awesomeninja"
+              };
+              WidgetHome.data.content.custom = dummyData.custom;
+              WidgetHome.data.content.subDomain = dummyData.subDomain;
+            }
+
             buildfire.getContext(function (err, context) {
               if (context) {
                 if (WidgetHome.data.content.custom && context.device.platform == "web") {
@@ -26,8 +39,8 @@
               else {
                 console.log("Error getting context: ", err);
               }
-
             });
+
           };
           WidgetHome.error = function (err) {
             if (err && err.code !== STATUS_CODE.NOT_FOUND) {
