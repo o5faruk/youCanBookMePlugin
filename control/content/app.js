@@ -77,27 +77,30 @@
          * */
         ContentHome.init = function () {
           ContentHome.success = function (result) {
-              console.info('init success result:', result);
-              if (Object.keys(result.data).length > 0) {
-                ContentHome.data = result.data;
-              }
-              if (ContentHome.data) {
-                if (!ContentHome.data.content)
-                  ContentHome.data.content = {};
-                if (ContentHome.data.content.subDomain)
-                  ContentHome.subDomain = ContentHome.data.content.subDomain;
-                if (ContentHome.data.content.custom)
-                  ContentHome.custom = ContentHome.data.content.custom;
-              }
-            };
+            console.info('init success result:', result);
+            if (result.data && result.id) {
+              ContentHome.data = result.data;
+              if (!ContentHome.data.content)
+                ContentHome.data.content = {};
+              if (ContentHome.data.content.subDomain)
+                ContentHome.subDomain = ContentHome.data.content.subDomain;
+              if (ContentHome.data.content.custom)
+                ContentHome.custom = ContentHome.data.content.custom;
+            }
+            else {
+              var dummyData = {
+                custom: "https://awesomeninja.youcanbook.me/",
+                subDomain: "awesomeninja"
+              };
+              ContentHome.subDomain = ContentHome.data.content.subDomain = dummyData.subDomain;
+              ContentHome.custom = ContentHome.data.content.custom = dummyData.custom;
+            }
+          };
           ContentHome.error = function (err) {
-              if (err && err.code !== STATUS_CODE.NOT_FOUND) {
-                console.error('Error while getting data', err);
-              }
-              else if (err && err.code === STATUS_CODE.NOT_FOUND) {
-                ContentHome.saveData(JSON.parse(angular.toJson(ContentHome.data)), TAG_NAMES.SCHEDULING_INFO);
-              }
-            };
+            if (err && err.code !== STATUS_CODE.NOT_FOUND) {
+              console.error('Error while getting data', err);
+            }
+          };
           DataStore.get(TAG_NAMES.SCHEDULING_INFO).then(ContentHome.success, ContentHome.error);
         };
         ContentHome.init();
