@@ -32,8 +32,10 @@
                 if (WidgetHome.data.content.custom && context.device.platform == "web") {
                   WidgetHome.isWebPlatform = true;
                 } else {
-                  if (WidgetHome.data.content.custom)
+                  if (WidgetHome.data.content.custom){
                     buildfire.navigation.openWindow(WidgetHome.data.content.custom, "_blank");
+                    buildfire.navigation.goBack();
+                  }
                 }
               }
               else {
