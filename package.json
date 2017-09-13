@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A plugin that provides integration with youcanbook.me to allow users to book time with you.",
   "main": "index.js",
+  "supportSite":"http://learn.appdocumentation.com/plugin-tutorials/you-can-book-me-plugin-tutorial",
   "scripts": {
     "postinstall": "./node_modules/.bin/bower install",
     "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS"
