@@ -2,6 +2,7 @@
   "author": "BuildFire",
   "pluginName": "YouCanBook.Me Scheduling and Booking",
   "pluginDescription": "YouCanBook.me is booking software that integrates with your Google or iCloud Calendar. Get a personalized scheduling page so your customers can book you online.Related Topics:SimplyBook",
+  "pluginKeywords":"appointment",
   "supportEmail": "support@buildfire.com",
   "supportSite":"http://learn.appdocumentation.com/plugin-tutorials/you-can-book-me-plugin-tutorial",
   "control": {
