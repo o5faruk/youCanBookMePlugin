@@ -11,7 +11,14 @@
          */
         WidgetHome.init = function () {
           WidgetHome.success = function (result) {
-            if (result.data && result.id) {
+            let urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has("bookingUrl")) {
+              WidgetHome.data = {
+                content: {
+                  custom: urlParams.get("bookingUrl")
+                }
+              }
+            } else if (result.data && result.id) {
               WidgetHome.data = result.data;
               if (!WidgetHome.data.content)
                 WidgetHome.data.content = {};
@@ -32,7 +39,7 @@
                 if (WidgetHome.data.content.custom && context.device.platform == "web") {
                   WidgetHome.isWebPlatform = true;
                 } else {
-                  if (WidgetHome.data.content.custom){
+                  if (WidgetHome.data.content.custom) {
                     buildfire.navigation.openWindow(WidgetHome.data.content.custom, "_blank");
                     buildfire.navigation.goBack();
                   }
